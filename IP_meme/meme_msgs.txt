@@ -1,0 +1,26 @@
+Duplicate sequence name. Skipping 'chr1:19251481-19251382'.
+Duplicate sequence name. Skipping 'chr1:19251481-19251382'.
+Duplicate sequence name. Skipping 'chr1:19251481-19251382'.
+Duplicate sequence name. Skipping 'chr12:49974538-49974439'.
+Duplicate sequence name. Skipping 'chr12:109606577-109606478'.
+Duplicate sequence name. Skipping 'chr12:109606577-109606478'.
+Duplicate sequence name. Skipping 'chr12:109606577-109606478'.
+Duplicate sequence name. Skipping 'chr12:109606577-109606478'.
+Duplicate sequence name. Skipping 'chr12:109606577-109606478'.
+Duplicate sequence name. Skipping 'chr17:73770899-73770800'.
+Duplicate sequence name. Skipping 'chr19:6241533-6241434'.
+Duplicate sequence name. Skipping 'chr4:48779665-48779566'.
+Duplicate sequence name. Skipping 'chr6:32853679-32853580'.
+Duplicate sequence name. Skipping 'chr6:32853679-32853580'.
+Duplicate sequence name. Skipping 'chr7:73683108-73683009'.
+Duplicate sequence name. Skipping 'chr7:73683108-73683009'.
+Duplicate sequence name. Skipping 'chr7:73683108-73683009'.
+Duplicate sequence name. Skipping 'chr7:73683108-73683009'.
+Duplicate sequence name. Skipping 'chr8:3469623-3469524'.
+The given ghostscript "/opt/homebrew/Caskroom/mambaforge/base/envs/PGB/bin/gs" is not an executable file.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.

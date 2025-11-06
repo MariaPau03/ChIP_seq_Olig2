@@ -1,0 +1,27 @@
+MOTIF_INDEX	MOTIF_SOURCE	MOTIF_ID	ALT_ID	CONSENSUS	WIDTH	SITES	E-VALUE	E-VALUE_SOURCE	MOST_SIMILAR_MOTIF_SOURCE	MOST_SIMILAR_MOTIF	URL
+1	MEME	GHKGCCAVWSAGKGG	MEME-1	GHKGCCAVWSAGKGG	15	30	1.2e-029	MEME	jaspar.meme	MA0502.2 (NFYB)	http://jaspar.genereg.net/matrix/MA0502.2
+2	MEME	CMTCTCYCTTCTCMV	MEME-3	CMTCTCYCTTCTCMV	15	59	1.4e-025	MEME	 	 	 
+3	MEME	TKSCATGCTTSCYTG	MEME-2	TKSCATGCTTSCYTG	15	15	2.0e-025	MEME	jaspar.meme	MA0119.1 (NFIC::TLX1)	http://jaspar.genereg.net/matrix/MA0119.1
+4	jaspar.meme	MA0739.1	Hic1	RTGCCAACY	9	133	2.3e-004	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0739.1
+5	jaspar.meme	MA1618.1	Ptf1a	NNACAGATGTTNN	13	139	4.6e-004	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1618.1
+6	jaspar.meme	MA0698.1	ZBTB18	NATCCAGATGTKB	13	93	1.1e-003	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0698.1
+7	jaspar.meme	MA0832.1	Tcf21	RYAACAGCTGTTRN	14	26	1.2e-003	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0832.1
+8	jaspar.meme	MA0521.1	Tcf12	RACAGCTGSNV	11	85	1.6e-003	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0521.1
+9	jaspar.meme	MA0101.1	REL	BGGRNWTTCC	10	116	2.0e-003	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0101.1
+10	jaspar.meme	MA0783.1	PKNOX2	TGACAGGTGTCA	12	17	2.4e-003	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0783.1
+11	jaspar.meme	MA1522.1	MAZ	BBCCCCTCCCY	11	91	3.9e-003	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1522.1
+12	jaspar.meme	MA0738.1	HIC2	RTGCCCRSB	9	151	1.0e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0738.1
+13	jaspar.meme	MA0500.2	MYOG	NDRCAGCTGYHN	12	122	1.2e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0500.2
+14	jaspar.meme	MA1641.1	MYF5	NVACAGCTGTBN	12	125	1.5e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1641.1
+15	jaspar.meme	MA0669.1	NEUROG2	RACATATGTC	10	74	1.5e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0669.1
+16	jaspar.meme	MA0048.2	NHLH1	CGCAGCTGCK	10	99	1.5e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA0048.2
+17	jaspar.meme	MA1619.1	Ptf1a(var.2)	NNACAGCTGTNN	12	127	1.8e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1619.1
+18	STREME	4-RCAAGGVAGCW	STREME-4	RCAAGGVAGCW	11	31	2.5e-002	STREME	 	 	 
+19	jaspar.meme	MA1635.1	BHLHE22(var.2)	NVCAGCTGBN	10	60	3.4e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1635.1
+20	jaspar.meme	MA1550.1	PPARD	HRRGGTCAAAGGTCAN	16	25	3.4e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1550.1
+21	jaspar.meme	MA1653.1	ZNF148	YBCCCCTCCCCC	12	109	4.6e-002	CENTRIMO	 	 	http://jaspar.genereg.net/matrix/MA1653.1
+22	STREME	2-CAGATGS	STREME-2	CAGATGS	7	75	5.0e-002	STREME	jaspar.meme	MA1638.1 (HAND2)	http://jaspar.genereg.net/matrix/MA1638.1
+
+# MEME-ChIP (Motif Analysis of Large Nucleotide Datasets): Version 5.5.8 released on Thu May 15 15:01:46 2025 -0700
+# The format of this file is described at https://meme-suite.org/meme//doc/meme-chip-output-format.html
+# meme-chip -oc IP_meme --db jaspar.meme RobustPeaks.resized.bed.fa

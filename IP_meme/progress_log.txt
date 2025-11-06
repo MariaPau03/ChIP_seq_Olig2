@@ -1,0 +1,78 @@
+Invoking:
+  getsize IP_meme/RobustPeaks.resized.bed.fa 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.047315
+Invoking:
+  fasta-most -min 50 < IP_meme/RobustPeaks.resized.bed.fa 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.043861
+Invoking:
+  fasta-center -dna -len 100 < IP_meme/RobustPeaks.resized.bed.fa 1> IP_meme/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.042402
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 IP_meme/RobustPeaks.resized.bed.fa IP_meme/background
+Finished invoke:
+  name: bg  status: 0  time: 0.037606
+Invoking:
+  meme IP_meme/seqs-centered -oc IP_meme/meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 15 -bfile IP_meme/background -dna -seed 0 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 12.145917
+Invoking:
+  streme --verbosity 1 --oc IP_meme/streme_out -dna --seed 0 --p IP_meme/seqs-centered --minw 6 --maxw 15 --order 2
+Finished invoke:
+  name: streme  status: 0  time: 1.919746
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc IP_meme/centrimo_out -bfile IP_meme/background IP_meme/RobustPeaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml jaspar.meme
+Finished invoke:
+  name: centrimo  status: 0  time: 1.621148
+Invoking:
+  tomtom -verbosity 1 -oc IP_meme/meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/meme_out/meme.xml jaspar.meme
+Finished invoke:
+  name: meme_tomtom  status: 0  time: 1.912717
+Invoking:
+  tomtom -verbosity 1 -oc IP_meme/streme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/streme_out/streme.xml jaspar.meme
+Finished invoke:
+  name: streme_tomtom  status: 0  time: 0.935676
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 IP_meme/combined.meme IP_meme/combined.meme 1> IP_meme/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.229097
+Invoking:
+  spamo -verbosity 1 -oc IP_meme/spamo_out_1 -bgfile IP_meme/background -keepprimary -primary GHKGCCAVWSAGKGG IP_meme/RobustPeaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml
+Finished invoke:
+  name: spamo1  status: 0  time: 0.121672
+Invoking:
+  spamo -verbosity 1 -oc IP_meme/spamo_out_2 -bgfile IP_meme/background -keepprimary -primary CMTCTCYCTTCTCMV IP_meme/RobustPeaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml
+Finished invoke:
+  name: spamo2  status: 0  time: 0.066127
+Invoking:
+  spamo -verbosity 1 -oc IP_meme/spamo_out_3 -bgfile IP_meme/background -keepprimary -primary TKSCATGCTTSCYTG IP_meme/RobustPeaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml
+Finished invoke:
+  name: spamo3  status: 0  time: 0.057648
+Invoking:
+  spamo -verbosity 1 -oc IP_meme/spamo_out_4 -bgfile IP_meme/background -keepprimary -primary 2-CAGATGS IP_meme/RobustPeaks.resized.bed.fa IP_meme/streme_out/streme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml
+Finished invoke:
+  name: spamo4  status: 0  time: 0.052374
+Invoking:
+  fimo --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif GHKGCCAVWSAGKGG IP_meme/meme_out/meme.xml IP_meme/RobustPeaks.resized.bed.fa
+Finished invoke:
+  name: fimo1  status: 0  time: 0.106211
+Invoking:
+  fimo --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif CMTCTCYCTTCTCMV IP_meme/meme_out/meme.xml IP_meme/RobustPeaks.resized.bed.fa
+Finished invoke:
+  name: fimo2  status: 0  time: 0.048875
+Invoking:
+  fimo --verbosity 1 --oc IP_meme/fimo_out_3 --bgfile IP_meme/background --motif TKSCATGCTTSCYTG IP_meme/meme_out/meme.xml IP_meme/RobustPeaks.resized.bed.fa
+Finished invoke:
+  name: fimo3  status: 0  time: 0.048005
+Invoking:
+  fimo --verbosity 1 --oc IP_meme/fimo_out_4 --bgfile IP_meme/background --motif 2-CAGATGS IP_meme/streme_out/streme.xml IP_meme/RobustPeaks.resized.bed.fa
+Finished invoke:
+  name: fimo4  status: 0  time: 0.035971
+Writing output
+Invoking:
+  meme-chip_html_to_tsv IP_meme/meme-chip.html IP_meme/summary.tsv "meme-chip -oc IP_meme --db jaspar.meme RobustPeaks.resized.bed.fa" 5.5.8 "Thu May 15 15\:01\:46 2025 -0700"
+Finished invoke:
+  name: summary  status: 0  time: 0.112355
+Done

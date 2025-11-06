@@ -1,0 +1,2 @@
+Warning: Eliminated 19 sequences that had the same ID as another sequence.
+Sequences must have unique IDs.

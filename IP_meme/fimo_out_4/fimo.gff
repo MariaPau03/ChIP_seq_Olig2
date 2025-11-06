@@ -1,0 +1,24 @@
+##gff-version 3
+chr1	fimo	nucleotide_motif	43358433	43358439	42.5	+	.	Name=2-CAGATGS_chr1+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr1;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr1	fimo	nucleotide_motif	43358433	43358439	42.5	+	.	Name=2-CAGATGS_chr1+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr1;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	12813091	12813097	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	12813091	12813097	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	12813091	12813097	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	12813091	12813097	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	12813091	12813097	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	12813091	12813097	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	110183721	110183727	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	110183721	110183727	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr12	fimo	nucleotide_motif	110183721	110183727	42.5	-	.	Name=2-CAGATGS_chr12-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr12;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr3	fimo	nucleotide_motif	69543065	69543071	42.5	-	.	Name=2-CAGATGS_chr3-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr3;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr3	fimo	nucleotide_motif	69543065	69543071	42.5	-	.	Name=2-CAGATGS_chr3-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr3;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr3	fimo	nucleotide_motif	69543065	69543071	42.5	-	.	Name=2-CAGATGS_chr3-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr3;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr4	fimo	nucleotide_motif	48779740	48779746	42.5	-	.	Name=2-CAGATGS_chr4-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr4;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr4	fimo	nucleotide_motif	48779740	48779746	42.5	-	.	Name=2-CAGATGS_chr4-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr4;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	4397605	4397611	42.5	+	.	Name=2-CAGATGS_chr6+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	4397605	4397611	42.5	+	.	Name=2-CAGATGS_chr6+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	4397605	4397611	42.5	+	.	Name=2-CAGATGS_chr6+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	101284280	101284286	42.5	-	.	Name=2-CAGATGS_chr6-;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	112880131	112880137	42.5	+	.	Name=2-CAGATGS_chr6+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	112880277	112880283	42.5	+	.	Name=2-CAGATGS_chr6+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-2-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=CAGATGC;
+chr6	fimo	nucleotide_motif	125773626	125773632	42.5	+	.	Name=2-CAGATGS_chr6+;Alias=STREME-2;ID=2-CAGATGS-STREME-2-1-chr6;pvalue=5.67e-05;qvalue=0.374;sequence=cagatgc;
