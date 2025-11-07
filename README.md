@@ -71,5 +71,6 @@ To run meme-chip, is necessary to have the jaspar.meme which is a file containin
 
 To finish with, the identified peaks were annotated to the nearest genes using ChIPseeker (R package) and visualized in IGV. Coverage profiles and peak distributions were also examined using deepTools to asses genome-wide enrichment patterns. 
 
-Last but not least, the ChIPSeeker analysis with R/Bioconductor is also attached (ChIP_seq.r) and all the results are inside the ChIP_seeker folder
+Last but not least, the ChIPSeeker analysis with R/Bioconductor is also attached (ChIP_seq.r) and all the results are inside the ChIP_seeker folder. 
 
+PD: There's also two csv files in which shows enrichment output into a tidy, analysis-ready format and added Ensembl IDs to make it robust for any downstream integration or visualization.
