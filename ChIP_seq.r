@@ -54,7 +54,7 @@ library(clusterProfiler)
 setwd("/Users/mariapau/desktop/master/bioinfo/1st_TERM/PGB/bHLH_project/ChIP_seq")
 
 ### ChIP profiling --------
-peak <- readPeakFile("IP_summits.bed") #readPeakFile loads the peak and store in GRanges object
+peak <- readPeakFile("IP_peaks.narrowPeak") #readPeakFile loads the peak and store in GRanges object
 peak
 
 ### ChIP peaks coverage plot --------
@@ -132,28 +132,42 @@ path_mouse <- enrichPathway(gene = gene_ids,
                             pvalueCutoff = 0.05, qvalueCutoff = 0.2,
                             readable = TRUE)   # converts Entrez -> SYMBOL using org.Mm.eg.db
 
-head(path_mouse, 3)
-#### Plots
+#head(path_mouse, 3) #Show only the first three rows
+#sum(path_mouse@result$p.adjust < 0.05) #To get the most significant genes in the Reactome pathway
+#path_mouse@gene #Shows all the genes that are regulated by Olig2. This genes are in an Entrez label.
+#list9genes<-""
+#for (i in 1:length(path_mouse@gene)){
+ # if (path_mouse@result$p.adjust[i] < 0.05){
+  #  list9genes<<-paste(list9genes, path_mouse@gene[i], sep = "\n")
+#  }
+#}
+#write(list9genes, file = "list9enrichedpathways", sep = "\n", append = FALSE)
+
+
+#### Plots --> will show the 9 significant enriched pathways :)
 barplot(path_mouse, showCategory = 20)
 dotplot(path_mouse, showCategory = 20)
 
 
 ## Extract gene IDs involved in the enriched pathway :)
 #slotNames(path_mouse)
-enriched_genes <- path_mouse@result #Extracting the "result" slot inside that object
+enriched_genes <- path_mouse@result[path_mouse@result$p.adjust < 0.05, ] 
 head(enriched_genes)
 
 ### Separate the gene IDs for each enriched pathway
 enriched_genes_df <- enriched_genes %>%
   select(ID, Description, geneID) %>%
-  mutate(geneID = strsplit(geneID, "/")) %>%  # Split gene IDs by "/"
-  unnest(geneID)  # Flatten the list into a dataframe
+  mutate(geneID = strsplit(geneID, "/")) %>%
+  unnest(geneID)
+  
+
+# %>% "passa" el resultat d'una expresió com a entrada de la següent funció
 
 #### Display the resulting dataframe
 head(enriched_genes_df)
 
 #### Save the gene IDs to a CSV file
-write.csv(enriched_genes_df, "enriched_genes_mouse.csv", row.names=FALSE)
+write.csv(enriched_genes_df, "genes_in_enriched_pathways", row.names=FALSE)
 
 # Get Ensembl IDs ----------
 ## By extractin the Esembl IDs of the found genes, they could be compared with the RNA-seq analysis. 
@@ -163,14 +177,16 @@ library(dplyr)
 ## Creation of a list contianing Ensembl gene identifiers
 #head(enriched_genes_df$geneID) # to check what is the IDs really look like
 
-entrez_ids <- enriched_genes_df$geneID
-ensembl_ids <- mapIds(
-  org.Mm.eg.db,
-  keys = entrez_ids,
-  column = "ENSEMBL",
-  keytype = "SYMBOL",
+entrez_ids <-  enriched_genes_df$geneID
+ensembl_ids <- mapIds( #convert the symbols to ensembl ids 
+  #mapIds() comes frmo the AnnotationDbi package (used by all the org.*.eg.db annotation databases)
+  x = org.Mm.eg.db, #database from Mus musculus
+  keys = entrez_ids, #the input IDs (gene symbols here)
+  column = "ENSEMBL", #what is wanted to get
+  keytype = "SYMBOL", #current input 
   multiVals = "first" #If multiple mappings, take the first one!
 )
+
 
 ## Add the Ensembl IDs as a new column to the existing dataframe
 enriched_genes_df$Ensembl_ID <- ensembl_ids
@@ -178,8 +194,37 @@ enriched_genes_df$Ensembl_ID <- ensembl_ids
 ## Display the updated dataframe
 head(enriched_genes_df)
 
-write.csv(enriched_genes_df, "enriched_genes_with_ensembl.csv", row.names=FALSE)
+write.csv(enriched_genes_df, "adjusted_genes_with_ensembl.csv", row.names=FALSE)
 
 
+## Convert the csv into pdf
+# 1) Install once (if needed)
+install.packages(c("gt", "webshot2", "readr", "dplyr"))
+install.packages("gt")
+
+
+# 2) Make the PDF
+library(readr)
+library(dplyr)
+library(gt)
+
+df <- read_csv("adjusted_genes_with_ensembl.csv")  # reads comma-separated CSV
+
+tbl <- df |>
+  gt() |>
+  tab_header(
+    title = md("**Significant genes from the enriched pathways with Ensembl IDs**"),
+    subtitle = format(Sys.time(), "Generated on %Y-%m-%d")
+  ) |>
+  cols_label(
+    ID = "Pathway ID",
+    Description = "Pathway",
+    geneID = "Gene symbol",
+    Ensembl_ID = "Ensembl ID"
+  ) |>
+  tab_options(table.font.size = px(10)) |>
+  opt_table_lines() 
+
+gtsave(tbl, "adjusted_genes_with_ensembl.pdf")   # creates a proper PDF table
 
 

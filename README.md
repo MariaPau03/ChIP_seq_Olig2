@@ -69,8 +69,56 @@ To run meme-chip, is necessary to have the jaspar.meme which is a file containin
 
 `$ meme-chip -oc IP_meme --db jaspar.meme RobustPeaks.resized.bed.fa`
 
-To finish with, the identified peaks were annotated to the nearest genes using ChIPseeker (R package) and visualized in IGV. Coverage profiles and peak distributions were also examined using deepTools to asses genome-wide enrichment patterns. 
+To finish with, the identified peaks were annotated to the nearest genes, binding preference in genomic elements, functional analysis and all this  using ChIPseeker, an R package.
 
-Last but not least, the ChIPSeeker analysis with R/Bioconductor is also attached (ChIP_seq.r) and all the results are inside the ChIP_seeker folder. 
+**Software and Environment**
+Al analyses were conducted in R (version ≥4.3) usin Bioconductor 3.22 packages. The workflow followed the official ChIPseeker vignette. The following R packages were installed and loaded:
+- ChIPseeker (peak annotation and visualization)
+- TxDb.Mmusculus.UCSC.mm10.knownGene (gene annotation for mouse genome, mm10)
+- org.Mm.eg.db (gene ID mapping)
+- clusterProfiler and ReactomePA (functional enrichment analysis)
 
-PD: There's also two csv files in which shows enrichment output into a tidy, analysis-ready format and added Ensembl IDs to make it robust for any downstream integration or visualization.
+**Input data and preprocessing**
+ChIP-seq peak coordinates were imported from the file IP_peaks.narrowPeak (from MACS2) using the function readPeakFile() from ChIPseeker, generating a GRanges object for downstream processing. The narrowPeak file lists the genomic regions where the protein is enriched, and that’s exactly what ChIPseeker needs to annotate relative to genes, TSS, promoters, etc. 
+To asses sequencing coverage, genomic coverage plots were generated using:
+```
+covplot(peak, weightCol="V5")
+covplot(peak, weightCol="V5", chrs=c("chr17", "chr18"), xlim=c(4.5e7, 5e7))
+```
+
+These plots visualize peak distribution across chromosomes and highlight local enrichment regions. 
+
+**Peak annotation**
+Peaks were annotated relative to known genomic features using:
+`annotatePeak(peak, TxDb = txdb, tssRegion = c(-3000, 3000), annoDb = "org.Mm.eg.db")`
+Promoter regions were defined as ±3 kb around transcription start site (TSS). Visualization functions included: 
+- plotAnnoPie() and vennpie() to summarize genomic distributions
+- upsetplot() for overlapping genomic categories
+- plotDistToTSS() for distance distributions between peaks and TSS
+
+**Peak enrichment at TSS**
+Promoter and TSS-centered analyses were performed using:
+```
+prom <- getPromoters(TxDb=txdb, upstream=3000, downstream=3000)
+tm <- getTagMatrix(peak, windows=prom)
+```
+The tagHeatmap() and peakHeatmap() functions visualized peak intensity around promoters, and plotAvfProf() computed the average Chip-Signal across ±3 kb from the TSS. Approximately N peaks overlapped annotated gene regions, as estimated by:
+`sum(overlapsAny(peak, genes(txdb)))`
+
+**Functional enrichment analysis**
+Annotated genes were extracted and converted to Entrex IDs, then submitted to Reactome pathway enriched analysis using enrichPathway() from the ReactomePA package:
+
+`path_mouse <- enrichPathway(gene = gene_ids, organism = "mouse", pvalueCutoff = 0.05, qvalueCutoff = 0.2, readable = TRUE)`
+ReactomePA tests hundreds or thousands of pathways to see whether your input gene list is overrepresented in each one. Each pathway gives a p-value, which is the probability that the observed overlap (between the genes and the pathway) occurred by chance. But since it was tested many pathways, the chance of getting some small p-value just by random chance increases dramatically. That’s where p-value adjustment come in. 
+`enriched_genes <- path_mouse@result[path_mouse@result$p.adjust < 0.05, ] `
+By using p.adjust < 0.05 is just to select the significantly enriched pathways. This means that, after correction, the expected proportion of false positives among the significant results is ≤ 5%. The previous code basically counts how many and which are the genes from the pathways that remain significant  after correction. 
+Results were visualized via barplot() and dotplot() to highlight the 9 enriched pathways. Significantly enriched pathways included biological processes related to transcriptional regulation and chromatin modification (details in enriched_genes_mouse.csv). 
+
+**Gene ID conversion and output**
+The resulting list of enriched genes was exported and mapped to Ensembl iDs using the mapIds() function from`org.Mm.eg.db`. 
+`ensembl_ids <- mapIds(org.Mm.eg.db, keys=entrez_ids, column="ENSEMBL", keytype="SYMBOL", multiVals="first")`
+
+Final annotated results were saved as:
+- `genes_in_enriched_pathways`, in which there are the genes per enriched Reactome pathway
+- `adjusted_genes_with_ensembl.csv`, in which there are the corresponding Ensembl IDs for posterior cross-comparison with RNA-seq datasets.
+
